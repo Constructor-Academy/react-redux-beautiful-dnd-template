@@ -1,28 +1,8 @@
 import React, { Component } from 'react';
-import Item from "../Item";
-import styled from "styled-components";
+import Item from "../Item/index";
 import { Droppable } from "react-beautiful-dnd";
 
-const Wrapper = styled.div`
-    width: 30%;
-    height: 80%;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-
-    background-color: cornsilk;
-`;
-const Title = styled.h2``;
-const Tasklist = styled.div`
-    width: 90%;
-    height: 90%;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-`;
+import {Wrapper, Tasklist, Title} from "./style";
 
 let titles = {
   "Column1": "Column 1",

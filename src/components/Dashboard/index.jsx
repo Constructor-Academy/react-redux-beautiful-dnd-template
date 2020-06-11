@@ -1,28 +1,12 @@
 import React from 'react';
 import { DragDropContext } from "react-beautiful-dnd";
-import Column from "../Column";
-import styled from "styled-components";
+import Column from "../Column/index";
 import { connect } from "react-redux";
 import { setItems } from "../../store/actions/itemAction";
 import { deleteJobFromSourceCol, extractResults, insertJobInDestCol, reArrangeInSameCol } from "./tools";
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-`;
+import {Wrapper, ColumnWrapper} from "./style";
 
-const ColumnWrapper = styled.div`
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-
-    border: 1px solid black;
-`;
 
 const mapStateToProps = ( { itemReducer: { items } } ) => ({
   items
@@ -42,14 +26,14 @@ export const Dashboard = connect(mapStateToProps)(( { history, dispatch, items }
     let extractedResult = extractResults(result, items)
     let { sourceCol, destCol, jobId, sourceIndex, destIndex, job } = extractedResult
     console.log(sourceCol, destCol, jobId, sourceIndex, destIndex, job)
-    
+    let itemsReArranged = null;
     // If drag and drop inside same droppable area
     if(sourceCol === destCol) {
-      var itemsReArranged = reArrangeInSameCol(extractedResult, items)
+      itemsReArranged = reArrangeInSameCol(extractedResult, items)
     } else {
       let newSourceCol = deleteJobFromSourceCol(extractedResult, items)
       let newDestCol = insertJobInDestCol(extractedResult, items)
-      var itemsReArranged = {
+      itemsReArranged = {
         ...items,
         [sourceCol]: newSourceCol,
         [destCol]: newDestCol

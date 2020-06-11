@@ -1,34 +1,11 @@
 import React, { Component } from 'react';
-import styled from "styled-components";
 import { Draggable } from "react-beautiful-dnd";
 import { connect } from "react-redux";
 
-const Wrapper = styled.div`
-    width: 90%;
-    margin-bottom: 4px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    
-    background-color: white;
-    border: 1px solid black;
-`;
-
-const Info = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-`;
-
-const InfoItem = styled.div`
-   padding: 2px;
-`;
+import {Wrapper, Info, InfoItem} from "./style";
 
 
 class Item extends Component {
-  
   
   render() {
     return (
