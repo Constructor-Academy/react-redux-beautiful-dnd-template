@@ -11,34 +11,35 @@ import {AddBtn} from "../../styles/btn";
 import addTodoBtn from "../../assets/plus.svg";
 import closeModalBtn from "../../assets/minus.svg";
 
-// let titles = {
-//   "Column1": "Column 1",
-//   "Column2": "Column 2",
-//   "Column3": "Column 3"
-// }
-
 const Column = (props) => {
-
-  console.log("PROPS:", props, "OBJECT:", Object.values(props.items))
 
   const modalRef = React.useRef();
 
   const [title, setTitle] = React.useState("");
   const [titlePlaceholder, setTitlePlaceholder] = React.useState("...");
   const [content, setContent] = React.useState("");
-  const [selectedValue, setSelectedValue] = React.useState("disabledValue")
+  const [selectedValue, setSelectedValue] = React.useState("disabledValue");
+
+  const [columnId] = React.useState(props.id);
+
+  const [itemCounter, setItemCounter] = React.useState(0)
 
   const handleItem = e => {
     e.preventDefault();
-    if(title.length > 0 || props.columns.includes(selectedValue))
+    if(title.length > 0 && selectedValue !== "disabledValue")
     {
+      setItemCounter(itemCounter+1);
       const data = {
         "title": title,
         "content": content,
-        "column": selectedValue
+        "status": selectedValue,
+        "index": itemCounter
       };
       props.dispatch(setItems(data));
       modalRef.current.closeModal();
+      setTitle("");
+      setContent("");
+      setSelectedValue("disabledValue");
     } else {
       setTitlePlaceholder("PLEASE ADD A TITLE");
       setSelectedValue("disabledValue");
@@ -79,7 +80,7 @@ const Column = (props) => {
             {
               props.columns.map((column, index) => {
                 return (
-                  <option key={index+1} value={`Column${index+1}`}>{column}</option>
+                  <option key={index+1} value={`Column${index+1}`} verif={column}>{column}</option>
                 )
               })
             }
@@ -100,8 +101,10 @@ const Column = (props) => {
                 Object.values(props.items).map(element => {
                   return (
                     element ?
-                      element.map(item => <Item key={ item.id } item={ item }/>)
-                    :
+                      element
+                        .filter(item => item.status === columnId)
+                        .map(item => <Item key={ item.id } item={ item }/>)
+                    : 
                       null
                   )
                 })

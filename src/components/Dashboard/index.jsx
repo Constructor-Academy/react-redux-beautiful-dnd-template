@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { DragDropContext } from "react-beautiful-dnd";
 import Column from "../Column/index";
 import { connect } from "react-redux";
-import { setItems } from "../../store/actions/itemAction";
+import { updateItems } from "../../store/actions/itemAction";
 import { deleteJobFromSourceCol, extractResults, insertJobInDestCol, reArrangeInSameCol } from "./tools";
 import {addColumn} from "../../store/actions/addColumn";
 
@@ -45,7 +45,8 @@ export const Dashboard = connect(mapStateToProps)(( { history, dispatch, items, 
         [destCol]: newDestCol
       }
     }
-    dispatch(setItems(itemsReArranged))
+    console.log(itemsReArranged)
+    dispatch(updateItems(itemsReArranged))
   }
   
   const handleColumn = (e) => {
@@ -84,7 +85,7 @@ export const Dashboard = connect(mapStateToProps)(( { history, dispatch, items, 
                 {
                   columns.map((column, index) => {
                     return (
-                      <Column key={index} columnId={`Column${index+1}`} id={index} title={column} />
+                      <Column key={index} columnId={`Column${index+1}`} id={`Column${index+1}`} title={column} />
                     )
                   })
                 }

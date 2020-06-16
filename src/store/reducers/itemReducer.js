@@ -1,6 +1,6 @@
 import {v4 as uuidv4} from "uuid";
 
-import { SET_ITEMS, ADD_COLUMN } from "../types";
+import { SET_ITEMS, ADD_COLUMN, UPDATE_ITEMS } from "../types";
 
 const initialState = {
   items: {
@@ -53,8 +53,7 @@ const initialState = {
     //   }
     // ]
   },
-  columnCounter: 0,
-  itemCounter: {}
+  columnCounter: 0
 };
 
 
@@ -71,29 +70,29 @@ export const itemReducer = ( state = initialState, action ) => {
       }
     }
     case SET_ITEMS: {
-      if(state.itemCounter[action.payload.column])
-      {
-        state.itemCounter[action.payload.column] += 1;
-      } else {
-        state.itemCounter[action.payload.column] = 0;
-      }
-      console.log(state.itemCounter)
       const newItem = {
         "id": uuidv4(),
-        "index": state.itemCounter[action.payload.column],
+        "index": action.payload.index,
         "title": action.payload.title,
         "description": action.payload.content,
-        "status": action.payload.column
+        "status": action.payload.status
       }
       return {
         ...state,
         items: {
           ...state.items,
-          [action.payload.column]: [
-            ...state.items[action.payload.column], 
+          [action.payload.status]: [
+            ...state.items[action.payload.status], 
             newItem
           ]
         }
+      }
+    }
+    case UPDATE_ITEMS: {
+      console.log(action.payload)
+      return {
+        ...state,
+        items: action.payload
       }
     }
     default:

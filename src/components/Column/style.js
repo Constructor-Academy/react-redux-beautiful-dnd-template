@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.section`
     width: 19%;
     height: 80%;
 
@@ -15,10 +15,10 @@ export const Wrapper = styled.div`
 export const Tasklist = styled.div`
     width: 90%;
     height: 90%;
-    
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 `;
 

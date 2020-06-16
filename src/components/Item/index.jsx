@@ -6,8 +6,8 @@ import {Wrapper, Info, ItemTitle, ItemContent} from "./style";
 
 
 class Item extends Component {
-  
   render() {
+    console.log(this.props)
     return (
       <Draggable draggableId={ this.props.item.id } index={ this.props.item.index }>
         {
