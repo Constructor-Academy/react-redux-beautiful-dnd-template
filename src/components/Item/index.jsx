@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Draggable } from "react-beautiful-dnd";
 import { connect } from "react-redux";
 
-import {Wrapper, Info, InfoItem} from "./style";
+import {Wrapper, Info, ItemTitle, ItemContent} from "./style";
 
 
 class Item extends Component {
@@ -18,8 +18,8 @@ class Item extends Component {
               ref={ provided.innerRef }
             >
               <Info>
-                <InfoItem>Title: { this.props.item.title }</InfoItem>
-                <InfoItem>Description: { this.props.item.description }</InfoItem>
+                <ItemTitle>{ this.props.item.title }</ItemTitle>
+                <ItemContent>{ this.props.item.description }</ItemContent>
               </Info>
             </Wrapper>
           )

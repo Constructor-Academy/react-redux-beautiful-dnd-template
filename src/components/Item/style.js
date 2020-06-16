@@ -17,9 +17,15 @@ export const Info = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
 `;
 
-export const InfoItem = styled.div`
-   padding: 2px;
+export const ItemTitle = styled.h4`
+   font-weight: bold;
+   text-decoration: underline;
+   margin-bottom: 5px;
+`;
+
+export const ItemContent = styled.p`
+  margin-top: 0px;
 `;
