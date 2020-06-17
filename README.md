@@ -2,7 +2,7 @@
 This is a project template to quickly get started with developing an app that features columns and items being drag & dropped
 between them.
 
-![](propulsion_template.gif)
+![](README/propulsion_template.gif)
 
 #### Project structure
 The project structure is fairly simple.
@@ -12,7 +12,7 @@ In there functions get called to recalculate the new state. As you can see in `i
 ```
 const initialState = {
   items: {
-    Column1: [
+    Column1: [ 
       {
         "id": "166b55f8-84eb-4a9f-9930-855dda68d016",
         "index": 0,
