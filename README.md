@@ -1,7 +1,9 @@
 # React-Redux beautiful-dnd with styled-components
 This is a project template to quickly get started with developing an app that features columns and items being drag & dropped
 between them.
+
 ![](propulsion_template.gif)
+
 #### Project structure
 The project structure is fairly simple.
 The main component is called `Dashboard` and specifies the columns that should appear.
