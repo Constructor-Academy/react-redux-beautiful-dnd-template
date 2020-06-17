@@ -19,7 +19,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     main {
-        background: linear-gradient(50deg, rgba(2,0,36,1) 0%, rgba(9,9,121,0.2) 70%, rgba(0,212,255,0.8) 100%);
+        background: linear-gradient(50deg, rgba(2,0,36,1) 0%, rgba(9,9,121,0.4) 60%, rgba(2,0,36,1) 100%);
     }
 
 `;
