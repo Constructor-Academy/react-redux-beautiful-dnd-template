@@ -2,7 +2,7 @@
 This is a project template to quickly get started with developing an app that features columns and items being drag & dropped
 between them.
 
-![](README/propulsion_template.gif)
+<img src="./README/propulsion_template.gif" title="Github Logo" width="100%">
 
 #### Project structure
 The project structure is fairly simple.
